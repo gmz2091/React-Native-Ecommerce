@@ -34,7 +34,6 @@ const RegisterForm = ({ changeForm }) => {
   });
   return (
     <View>
-      <Text>RegisterForm</Text>
       <TextInput
         label="Email"
         style={formStyle.input}

@@ -6,22 +6,29 @@ import { formStyle } from "../../styles";
 import * as Yup from "yup";
 import Toast from "react-native-root-toast";
 import { loginAPI } from "../../api/users";
+import useAuth from "../../hooks/useAuth";
 
 const LoginForm = ({ changeForm }) => {
   const [loading, setLoading] = useState(false);
+
+  const { login } = useAuth();
+
   const formik = useFormik({
     initialValues: initialVales(),
     validationSchema: Yup.object(validationSchema()),
     onSubmit: async (formData) => {
       setLoading(true);
       try {
-        console.log(formData);
         console.log("Formulario Enviado");
         const response = await loginAPI(formData);
+
         if (response.statusCode) throw "Error al iniciar sesion";
-        console.log(response);
+
+        login(response);
       } catch (error) {
         setLoading(false);
+        console.log(error.statusCode);
+
         Toast.show(error, {
           position: Toast.positions.CENTER,
         });
@@ -29,6 +36,7 @@ const LoginForm = ({ changeForm }) => {
       setLoading(false);
     },
   });
+
   return (
     <View>
       <TextInput
