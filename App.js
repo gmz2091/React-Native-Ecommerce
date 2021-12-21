@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import jwtDecode from "jwt-decode";
 import React, { useState, useMemo, useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
@@ -6,7 +7,6 @@ import { getTokenAPI, removeTokenAPI, setTokenAPI } from "./src/api/token";
 import AuthContext from "./src/context/AuthContext";
 import NavigationBottom from "./src/NavigationBar/NavigationBottom";
 import Auth from "./src/pages/Auth";
-import "react-native-gesture-handler";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
