@@ -6,6 +6,7 @@ import { getTokenAPI, removeTokenAPI, setTokenAPI } from "./src/api/token";
 import AuthContext from "./src/context/AuthContext";
 import NavigationBottom from "./src/NavigationBar/NavigationBottom";
 import Auth from "./src/pages/Auth";
+import "react-native-gesture-handler";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -54,7 +55,9 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={authData}>
-      <PaperProvider>{auth ? <NavigationBottom /> : <Auth />}</PaperProvider>
+      <PaperProvider>
+        {auth ? <NavigationBottom logout={logout} /> : <Auth />}
+      </PaperProvider>
     </AuthContext.Provider>
   );
 }
