@@ -6,6 +6,7 @@ import Search from "../../components/SearchBar";
 import Statusbar from "../../components/StatusBar";
 import colors from "../../styles/colors";
 import useAuth from "../../hooks/useAuth";
+import Screenloading from "../../components/ScreenLoading";
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -26,10 +27,16 @@ const Account = () => {
   return (
     <>
       <Statusbar backgroundColor={colors.bgDark} barStyle="light-content" />
-      <Search />
-      <ScrollView>
-        <Text>Account</Text>
-      </ScrollView>
+      {!user ? (
+        <Screenloading />
+      ) : (
+        <>
+          <Search />
+          <ScrollView>
+            <Text>Account</Text>
+          </ScrollView>
+        </>
+      )}
     </>
   );
 };
