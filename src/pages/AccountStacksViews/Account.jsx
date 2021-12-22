@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Text, ScrollView } from "react-native";
+import { Text, ScrollView, StyleSheet, View } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { getMeAPI } from "../../api/users";
 import Search from "../../components/SearchBar";
@@ -7,6 +7,7 @@ import Statusbar from "../../components/StatusBar";
 import colors from "../../styles/colors";
 import useAuth from "../../hooks/useAuth";
 import Screenloading from "../../components/ScreenLoading";
+import Userinfo from "../../components/ComponentsAuth/UserInfo";
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -34,6 +35,7 @@ const Account = () => {
           <Search />
           <ScrollView>
             <Text>Account</Text>
+            <Userinfo user={user} />
           </ScrollView>
         </>
       )}
@@ -42,3 +44,11 @@ const Account = () => {
 };
 
 export default Account;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
