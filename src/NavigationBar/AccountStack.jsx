@@ -13,6 +13,7 @@ const AccountStack = () => {
         component={Account}
         options={{
           title: "Account",
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
