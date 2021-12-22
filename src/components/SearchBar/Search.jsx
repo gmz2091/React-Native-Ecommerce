@@ -8,7 +8,7 @@ const Search = () => {
     <View style={styles.container}>
       <Searchbar
         placeholder="Busca tu producto"
-        // onChangeText={(text) => console.log(text)}
+        onChangeText={(text) => console.log(text)}
         // value={null}
       />
     </View>
@@ -17,7 +17,6 @@ const Search = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.bgDark,
     paddingVertical: 10,
     paddingHorizontal: 20,
     zIndex: 1,
