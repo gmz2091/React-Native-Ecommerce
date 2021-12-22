@@ -39,3 +39,21 @@ export const loginAPI = async (userData) => {
     return null;
   }
 };
+
+export const getMeAPI = async (token) => {
+  try {
+    const url = `${API_URL}/users/me`;
+    const params = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const res = await fetch(url, params);
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    console.log(error.message);
+  }
+};

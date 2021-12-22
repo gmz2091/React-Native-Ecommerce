@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import Account from "../pages/Account";
+import Account from "../pages/AccountStacksViews/Account";
 
 const Stack = createStackNavigator();
 
