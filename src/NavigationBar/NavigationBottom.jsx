@@ -4,14 +4,23 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
 import Cart from "../pages/Cart";
-import Account from "../pages/Account";
-
+import colors from "../styles/colors";
+import { StyleSheet } from "react-native";
+import AwesomeIcon from "react-native-vector-icons/FontAwesome";
+import AccountStack from "./AccountStack";
 const Tab = createMaterialBottomTabNavigator();
 
 const NavigationBottom = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        barStyle={styles.navigation}
+        screenOptions={({ route }) => ({
+          tabBarIcon: (routerStatus) => {
+            return setIcon(route, routerStatus);
+          },
+        })}
+      >
         <Tab.Screen
           name="home"
           component={Home}
@@ -28,7 +37,7 @@ const NavigationBottom = () => {
         />
         <Tab.Screen
           name="account"
-          component={Account}
+          component={AccountStack}
           options={{
             title: "Account",
           }}
@@ -46,3 +55,35 @@ const NavigationBottom = () => {
 };
 
 export default NavigationBottom;
+
+const setIcon = (route, routerStatus) => {
+  let iconName = "";
+
+  switch (route.name) {
+    case "home":
+      iconName = "home";
+      break;
+    case "favorites":
+      iconName = "heart";
+      break;
+    case "account":
+      iconName = "bars";
+      break;
+    case "cart":
+      iconName = "shopping-cart";
+      break;
+    default:
+      break;
+  }
+  return <AwesomeIcon name={iconName} style={styles.icon} />;
+};
+
+const styles = StyleSheet.create({
+  navigation: {
+    backgroundColor: colors.bgDark,
+  },
+  icon: {
+    fontSize: 20,
+    color: colors.fontLight,
+  },
+});

@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import jwtDecode from "jwt-decode";
 import React, { useState, useMemo, useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
@@ -32,12 +33,11 @@ export default function App() {
       idUser: user.user._id,
     });
   };
-
-  const logout = async (user) => {
-    if (user) {
-      await removeTokenAPI();
+  
+  const logout = () => {
+    if (auth) {
+      removeTokenAPI();
       setAuth(null);
-      console.log("Logout Success");
     }
   };
 
