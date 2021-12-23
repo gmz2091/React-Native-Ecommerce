@@ -1,15 +1,18 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import colors from "../../styles/colors";
 
 const Userinfo = ({ user }) => {
   return (
     <View style={styles.container}>
-      <Text>
-        {user.name && user.lastname
-          ? `${user.name} ${user.lastname}`
-          : `${user.email} ${user.username}`}
-      </Text>
+      {user.name && user.lastname ? (
+        <Text>
+          {user.name} {user.lastname}
+        </Text>
+      ) : (
+        <Text>
+          {user.email} {user.username}
+        </Text>
+      )}
     </View>
   );
 };
@@ -19,7 +22,6 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: colors.primary,
   },
 });
 

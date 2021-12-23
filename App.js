@@ -33,12 +33,11 @@ export default function App() {
       idUser: user.user._id,
     });
   };
-
-  const logout = async (user) => {
-    if (user) {
-      await removeTokenAPI();
+  
+  const logout = () => {
+    if (auth) {
+      removeTokenAPI();
       setAuth(null);
-      console.log("Logout Success");
     }
   };
 
@@ -55,9 +54,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={authData}>
-      <PaperProvider>
-        {auth ? <NavigationBottom logout={logout} /> : <Auth />}
-      </PaperProvider>
+      <PaperProvider>{auth ? <NavigationBottom /> : <Auth />}</PaperProvider>
     </AuthContext.Provider>
   );
 }

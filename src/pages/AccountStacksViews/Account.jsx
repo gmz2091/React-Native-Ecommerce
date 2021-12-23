@@ -8,6 +8,7 @@ import colors from "../../styles/colors";
 import useAuth from "../../hooks/useAuth";
 import Screenloading from "../../components/ScreenLoading";
 import Userinfo from "../../components/ComponentsAuth/UserInfo";
+import Menu from "../../components/ComponentsAuth/Menu";
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -36,6 +37,7 @@ const Account = () => {
           <ScrollView>
             <Text>Account</Text>
             <Userinfo user={user} />
+            <Menu />
           </ScrollView>
         </>
       )}
